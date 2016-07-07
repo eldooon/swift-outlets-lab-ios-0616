@@ -13,11 +13,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var displayColorView: UIView!
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var winLabel: UILabel!
+
+    
+    
     var simonSaysGame = SimonSays()
     var buttonsClicked = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        winLabel.hidden = true
     }
 }
 
@@ -30,6 +34,69 @@ extension ViewController {
             }, completion: nil)
         
         displayTheColors()
+        
+    }
+    
+    @IBAction func redTapped(sender: AnyObject) {
+        simonSaysGame.guessRed()
+        buttonsClicked+=1
+        
+        if simonSaysGame.wonGame() {
+            winLabel.hidden = false
+            winLabel.text = "You won!"
+        }
+            
+        else if !simonSaysGame.wonGame() && buttonsClicked == 5{
+
+            winLabel.hidden = false
+            winLabel.text = "Nope,try again."
+        }
+
+    }
+    @IBAction func greenTapped(sender: AnyObject) {
+        simonSaysGame.guessGreen()
+        buttonsClicked+=1
+        
+        if simonSaysGame.wonGame() {
+            winLabel.hidden = false
+            winLabel.text = "You won!"
+        }
+            
+        else if !simonSaysGame.wonGame() && buttonsClicked == 5{
+
+            winLabel.hidden = false
+            winLabel.text = "Nope,try again."
+        }
+
+    }
+    @IBAction func yellowTapped(sender: AnyObject) {
+        simonSaysGame.guessYellow()
+        buttonsClicked+=1
+        
+        if simonSaysGame.wonGame() {
+            winLabel.hidden = false
+            winLabel.text = "You won!"
+        }
+            
+        else if !simonSaysGame.wonGame() && buttonsClicked == 5{
+
+            winLabel.hidden = false
+            winLabel.text = "Nope,try again."
+        }
+    }
+    @IBAction func blueTapped(sender: AnyObject) {
+        simonSaysGame.guessBlue()
+        buttonsClicked+=1
+        
+        if simonSaysGame.wonGame() {
+            winLabel.hidden = false
+            winLabel.text = "You won!"
+        }
+            
+        else if !simonSaysGame.wonGame() && buttonsClicked == 5{
+            winLabel.hidden = false
+            winLabel.text = "Nope,try again."
+        }
     }
     
     private func displayTheColors() {
